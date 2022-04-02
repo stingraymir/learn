@@ -1,5 +1,9 @@
 #create a node class
 
+from inspect import stack
+from json.encoder import INFINITY
+
+
 class Node():
     def __init__(self, val):
         self.val = val
@@ -117,6 +121,28 @@ def treeSumIterative(root):
             queue.append(current.right)
     return sum
 
+
+## Create a recursive code function to find the minimum value in a binary tree
+
+#Itterative solution
+
+def minValIter(root):
+    smallest = INFINITY
+    stack = [root]
+    if root is None:
+        return None
+    while len(stack) > 0:
+        current = stack.pop()
+        if current.val < smallest:
+            smallest = current.val
+        
+        if current.left:
+            stack.append(current.left)
+        if current.right:
+            stack.append(current.right)
+    return smallest
+
+
 #creating a binary tree            
 a = Node('a')
 b = Node('b')
@@ -140,11 +166,11 @@ g.right = None
 
 #create a binary tree of integers
 
-aa = Node(1)
-bb = Node(2)
-cc = Node(3)
+aa = Node(20)
+bb = Node(23)
+cc = Node(19)
 dd = Node(4)
-ee = Node(5)
+ee = Node(15)
 
 aa.left = bb
 aa.right = cc
@@ -156,6 +182,7 @@ bb.right = ee
 #print(depthFirstSearch(g))
 #print(depthFirstSearchRecurssive(a))
 #print(breadthFirstSearch(a))
-print(treeIncludes(a, 'm'))
-print(treeIncludesRecursive(a, 'f'))
+#print(treeIncludes(a, 'm'))
+#print(treeIncludesRecursive(a, 'f'))
 print(treeSumRecursive(aa))
+print(minValIter(aa))
