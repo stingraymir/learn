@@ -1,7 +1,6 @@
 #create a node class
 
-from inspect import stack
-from json.encoder import INFINITY
+from json.encoder import INFINITY   #code to import infinity
 
 
 class Node():
