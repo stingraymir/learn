@@ -123,7 +123,7 @@ def treeSumIterative(root):
 
 ## Create a recursive code function to find the minimum value in a binary tree
 
-#Itterative solution
+#Itterative solution with DFS
 
 def minValIter(root):
     smallest = INFINITY
@@ -140,6 +140,31 @@ def minValIter(root):
         if current.right:
             stack.append(current.right)
     return smallest
+
+#itterative solution with BFS
+def minValBFS(root):
+    if root is None:
+        return 0
+    queue = [root]
+    smallest = INFINITY
+    while len(queue) > 0:
+        current = queue.pop(0)
+        if current.val < smallest:
+            smallest = current.val
+        if current.left:
+            queue.append(current.left)
+        if current.right:    
+            queue.append(current.right)
+    return smallest
+
+#Recursive solution
+
+def minValRecursive(root):
+    if root is None:
+        return INFINITY
+    leftMin = minValRecursive(root.left)
+    rightMin = minValRecursive(root.right)
+    return min(leftMin, rightMin, root.val)
 
 
 #creating a binary tree            
@@ -185,3 +210,4 @@ bb.right = ee
 #print(treeIncludesRecursive(a, 'f'))
 print(treeSumRecursive(aa))
 print(minValIter(aa))
+print(minValRecursive(aa))
