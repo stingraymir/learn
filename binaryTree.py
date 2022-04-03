@@ -167,6 +167,20 @@ def minValRecursive(root):
     return min(leftMin, rightMin, root.val)
 
 
+##Create a function for maximal path sum from root to any leaf
+#Recursive Code
+
+def maxPathSumRecursive(root):
+    if root is None:
+        return -INFINITY
+    if root.left is None and root.right is None:
+        return root.val
+    maxChildPathSum = max(maxPathSumRecursive(root.left), maxPathSumRecursive(root.right)) 
+    return(maxChildPathSum + root.val)
+
+
+
+
 #creating a binary tree            
 a = Node('a')
 b = Node('b')
@@ -211,3 +225,4 @@ bb.right = ee
 print(treeSumRecursive(aa))
 print(minValIter(aa))
 print(minValRecursive(aa))
+print(maxPathSumRecursive(aa))
