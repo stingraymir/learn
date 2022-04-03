@@ -14,17 +14,25 @@ def fib(n):
 #By Memoization we can store a recuurent pattern or subproblems and use it to calculate the fibonacci sequence
 #This is called Dynamic programming
 
-#initialize the memo dictionary
-memo = {}
+#Using Decorators for memoizing 
+#Decorators are functions that modify other functions
+
+memory = {}
+def memoize(f):
+     
+    # This inner function has access to memory
+    # and 'f'
+    def inner(num):
+        if num not in memory:        
+            memory[num] = f(num)
+        return memory[num]
+    return inner
+
+@memoize
 def dynamicFib(n): 
-    
-    if n <= 2: 
+    if n <= 2:
         return 1
-    if n in memo:
-        return memo[n]
-    #store the value in the dictionary
-    memo[n] = fib(n-1) + fib(n-2)
-    return memo[n]
+    return dynamicFib(n-1) + dynamicFib(n-2)
 
 # so memoization allows us to not traverse the full tree every time we call the function
 # The time complexity of this method is O(n) and the space complexity is O(n)
@@ -50,8 +58,30 @@ def gridTraveller(n, m):
     return memoGrid[key]
 
 
+##Memoize grdiTraveller using decorators in Pyhton
+memo ={}
+def gridMemoize(f):
+    def inner(n, m):
+        key = str(n) + ',' + str(m)
+        if key not in memo:
+            memo[key] = f(n, m)
+        return memo[key]
+    return inner
 
-print(dynamicFib(50))
+@gridMemoize
+def gridTravellerMemo(n, m):
+    if n == 1 and m == 1:
+        return 1
+    if n == 0 or m == 0:
+        return 0
+    return gridTravellerMemo(m-1, n) + gridTravellerMemo(n-1, m)
+
+
+
+##Tests
+
+#print(dynamicFib(81))
 #print(fib(50))
 #print(gridTraveller(2, 3))
-#print(gridTraveller(18, 18))
+print(gridTraveller(18, 18))
+print(gridTravellerMemo(18, 18))
