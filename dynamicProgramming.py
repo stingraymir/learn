@@ -83,5 +83,5 @@ def gridTravellerMemo(n, m):
 #print(dynamicFib(81))
 #print(fib(50))
 #print(gridTraveller(2, 3))
-print(gridTraveller(18, 18))
-print(gridTravellerMemo(18, 18))
+#print(gridTraveller(36, 36))
+print(gridTravellerMemo(36, 36))
