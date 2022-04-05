@@ -79,10 +79,59 @@ def gridTravellerMemo(n, m):
 
 
 
+
+##Problem 3: Write a function 'canSum(target, numbers)' 
+#That returns a Boolean indicating whether or not it is possible to generate targetSum usingnumbers from the array.
+#We can use an element in the array as many times as needed
+#All Inputs will be positive integers
+
+#brute force recursive solution
+def canSum(target, array):
+    if target == 0:
+        return True
+    if (target < 0) or (len(array) == 0):
+        return False
+    for num in array:
+        remainder = target - num
+        if canSum(remainder, array) == True:
+            return True
+    return False
+
+#Using memoization
+memo = {}
+def canSumMemo(target, array):
+    if target in memo:
+        return memo[target]
+    if target == 0:
+        return True
+    if (target < 0) or (len(array) == 0):
+        return False
+
+    for num in array:
+        remainder = target - num
+        if canSumMemo(remainder, array) == True:
+            memo[target] = True
+            return True
+
+    memo[target] = False
+    return False
+
+
+
+
+
+
+
 ##Tests
 
 #print(dynamicFib(81))
 #print(fib(50))
 #print(gridTraveller(2, 3))
 #print(gridTraveller(36, 36))
-print(gridTravellerMemo(36, 36))
+#print(gridTravellerMemo(36, 36))
+print(canSum(7, [2,3]))
+print(canSum(7, [2, 4]))
+#print(canSum(300, [7, 14]))
+print(canSumMemo(300, [7, 14]))
+
+

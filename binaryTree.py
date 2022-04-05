@@ -1,6 +1,6 @@
 #create a node class
 
-from json.encoder import INFINITY   #code to import infinity
+from json.encoder import INFINITY   #code to import infinity float
 
 
 class Node():
@@ -222,7 +222,7 @@ bb.right = ee
 #print(breadthFirstSearch(a))
 #print(treeIncludes(a, 'm'))
 #print(treeIncludesRecursive(a, 'f'))
-print(treeSumRecursive(aa))
-print(minValIter(aa))
-print(minValRecursive(aa))
+#print(treeSumRecursive(aa))
+#print(minValIter(aa))
+#print(minValRecursive(aa))
 print(maxPathSumRecursive(aa))
