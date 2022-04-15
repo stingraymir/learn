@@ -1,4 +1,4 @@
-#implement a bubble sort
+#implement a BUBBLE SORT
 
 def bubbleSort(lst):
     for i in range(len(lst)):
@@ -8,7 +8,7 @@ def bubbleSort(lst):
     return lst
 
 
-#implement a selection sort
+#implement a SELECTION SORT
 def selectionSort(lst):
     for i in range(len(lst)):
         min_index = i
@@ -18,7 +18,7 @@ def selectionSort(lst):
         lst[i], lst[min_index] = lst[min_index], lst[i]
     return lst
 
-#implement a insertion sort
+#implement a INSERTION SORT
 def insertionSort(lst):
     for i in range(1, len(lst)):
         j = i
@@ -27,7 +27,7 @@ def insertionSort(lst):
             j -= 1
     return lst
 
-#Implement a merge sort
+#Implement a MERGE SORT
 def mergeSort(lst):
     if len(lst) <= 1:
         return lst
@@ -38,7 +38,7 @@ def mergeSort(lst):
     right = mergeSort(right)
     return (left + right)
 
-#Implement a quick sort
+#Implement a QUICK SORT
 def quickSort(lst):
     if len(lst) <= 1:
         return lst
@@ -53,7 +53,7 @@ def quickSort(lst):
     return quickSort(left) + [pivot] + quickSort(right)
 
 
-l = [3, 9, 1, 2, 4, 5, 8, 7, 6]
+l = [3, 9, 1, 2, 4, 5, 8, 7, 6, 0]
 print(bubbleSort(l))
 print(selectionSort(l))
 print(insertionSort(l))
