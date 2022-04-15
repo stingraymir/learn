@@ -118,9 +118,38 @@ def canSumMemo(target, array):
 
 
 
+#problem 4 : howSum(target, numbers) - retunrs an array containing any combination of elements that add up to exactly rhe target sum, if no such combo exists, return None
 
+def howSum(target, array):
+    if target == 0:
+        return []
+    if (target < 0) or (len(array) == 0):
+        return None
+    for num in array:
+        remainder = target - num
+        remainderResult = howSum(remainder, array)
+        if remainderResult != None:
+            return [num] + remainderResult
+    return None
 
+#using memoization
+memory = {}
+def howSumMemo(target, array):
+    if target in memory:
+        return memory[target]
+    if target == 0:
+        return []
+    if (target < 0) or (len(array) == 0):
+        return None
 
+    for num in array:
+        remainder = target - num
+        remainderResult = howSumMemo(remainder, array)
+        if remainderResult != None:
+            memory[target] = [num] + remainderResult
+            return memory[target]
+    memory[target] = None
+    return None
 
 ##Tests
 
@@ -129,9 +158,12 @@ def canSumMemo(target, array):
 #print(gridTraveller(2, 3))
 #print(gridTraveller(36, 36))
 #print(gridTravellerMemo(36, 36))
-print(canSum(7, [2,3]))
-print(canSum(7, [2, 4]))
+#print(canSum(7, [2,3]))
+#print(canSum(7, [2, 4]))
 #print(canSum(300, [7, 14]))
 print(canSumMemo(300, [7, 14]))
+#print(howSum(300, [7, 14]))
+print(howSum(7, [5, 3, 4, 7]))
+print(howSumMemo(2000, [10,100, 500, 14]))
 
 
