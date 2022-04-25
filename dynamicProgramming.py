@@ -1,4 +1,4 @@
-## Dynamic programming problems can use recursion or tabulation
+## Dynamic programming problems can use memoization or tabulation
 ## Recursion is mostly used for Dynamic programming
 
 ## Problem 1: Write a function that takes a number as an argument and returns the n-th number of the Fibboacci sequence
