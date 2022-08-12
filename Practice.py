@@ -1,4 +1,5 @@
 #valid palindrome 2
+#using recursion
 
 def isPalindrome(string):
     if len(string) <= 1:
@@ -7,10 +8,12 @@ def isPalindrome(string):
         return isPalindrome(string[1:-1])
     return False
 
+#reversing the string in place
 def isPalin(string):
   if string[::-1] == string:
     return True
   return False
+
 
 def validParenthesis(string):
   stack = []
@@ -103,12 +106,6 @@ def longestPalindrome(s):
 
 
 
- 
-
-
-
-
-
 #reverse a linked list
 
 def reverseList(head):
@@ -123,7 +120,26 @@ def reverseList(head):
     curr = next
   return prev
 
+
+
+#Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+def twoSum(nums, target):
+  if len(nums) < 2:
+    return []
+  d = {}
+  for i in range(len(nums)):
+    if nums[i] in d:
+      return [d[nums[i]], i]
+    d[target - nums[i]] = i
+  return []
+
+
+
+
+
+
 #
+
 
 
 
