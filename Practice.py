@@ -136,9 +136,8 @@ def twoSum(nums, target):
 
 
 
-
-
-#
+#a function that takes as input an array and returns all the pairs of numbers in that array that equal to a particular sum
+def pairSums(arr, sum)
 
 
 
